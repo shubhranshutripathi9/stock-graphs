@@ -1,1 +1,6 @@
 .p1_venv/
+.vscode/
+outputs/
+__pycache__/
+*.pyc
+.env
