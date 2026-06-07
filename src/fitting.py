@@ -20,21 +20,9 @@ def fit_distributions(log_returns):
     # a is shape like alpha in chi^2, rest same
     results["skewnorm"] = {"a": a, "loc": loc, "scale": scale}
 
-    # fit to chi-squared
-    df, loc, scale = stats.chi2.fit(log_returns)
-    results["chi2"] = {"df": df, "loc": loc, "scale": scale}
-
-    # fit to erlang
-    a, loc, scale = stats.erlang.fit(log_returns)
-    results["erlang"] = {"a": a, "loc": loc, "scale": scale}
-
     # fit to gamma
     a, loc, scale = stats.gamma.fit(log_returns)
     results["gamma"] = {"a": a, "loc": loc, "scale": scale}
-
-    # fit to logarithmic
-    p, loc, scale = stats.logser.fit(log_returns)
-    results["Chi2"] = {"p": p, "loc": loc, "scale": scale}
 
     # fit to generalised logistic
     c, loc, scale = stats.genlogistic.fit(log_returns)
