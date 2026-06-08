@@ -34,5 +34,4 @@ def fit_distributions(log_returns):
 
 if __name__ == "__main__":
     # test data, just to verify if code works; irrelevant otherwise
-    data = np.array([12.5, 14.1, 15.2, 11.8, 13.9, 14.5])
     print(fit_distributions(data))
