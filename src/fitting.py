@@ -13,7 +13,7 @@ def fit_distributions(log_returns):
     # fit to students t
     df, loc, scale = stats.t.fit(log_returns)
     # df is deg of freedom, loc means location(axis shift) and scale is the scale parameter
-    results["students t"] = {"df": df, "loc": loc, "scale": scale}
+    results["t"] = {"df": df, "loc": loc, "scale": scale}
 
     # fit to skew-normal
     a, loc, scale = stats.skewnorm.fit(log_returns)
@@ -30,3 +30,9 @@ def fit_distributions(log_returns):
 
     # all adjusted, the parameters are returned as a dictionary
     return results
+
+
+if __name__ == "__main__":
+    # test data, just to verify if code works; irrelevant otherwise
+    data = np.array([12.5, 14.1, 15.2, 11.8, 13.9, 14.5])
+    print(fit_distributions(data))
