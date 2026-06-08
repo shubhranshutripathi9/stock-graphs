@@ -1,12 +1,24 @@
 import yfinance as yf
 import os
 from datetime import datetime
+import pandas as pd
 
 
 def download_stocks():
 
     end = datetime.now().strftime("%Y-%m-%d")
-    tickers = ["SPY", "RELIANCE.NS", "TCS.NS", "INFY.NS", "HDFCBANK.NS"]
+    tickers = [
+        "SPY",
+        "RELIANCE.NS",
+        "TCS.NS",
+        "INFY.NS",
+        "HDFCBANK.NS",
+        "AAPL",
+        "NVDA",
+        "INTC",
+        "F",
+        "NOK",
+    ]
     os.makedirs("data", exist_ok=True)
 
     for ticker in tickers:
