@@ -20,6 +20,7 @@ def plot_qq(log_returns, results, ticker):
     for dist_name, param_keys in dist_map.items():
         fig, ax = plt.subplots(figsize=(8, 6))
         sparams = tuple(results[dist_name][k] for k in param_keys)
+        #probplot draws qq plot for sample
         stats.probplot(log_returns, sparams=sparams, dist=dist_name, fit=True, plot=ax)
         ax.set_title(f"QQ plot- {ticker}-{dist_name}")
         plt.savefig(f"outputs/qq_{ticker}/{ticker}-{dist_name}.png")
