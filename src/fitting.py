@@ -30,9 +30,3 @@ def fit_distributions(log_returns):
 
     # all adjusted, the parameters are returned as a dictionary
     return results
-
-
-if __name__ == "__main__":
-    # test data, just to verify if code works; irrelevant otherwise
-    data = np.array([12, 5, 34, 665, 5, 24, 654, 85, 0, 3, 96, 4])
-    print(fit_distributions(data))
