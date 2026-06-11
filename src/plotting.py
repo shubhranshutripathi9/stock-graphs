@@ -40,36 +40,5 @@ def plot_rolling_vol(returns_dict):
     ax.set_xlabel("Date")
     ax.set_ylabel("Volatility")
     ax.legend()
-    plt.savefig(f"outputs/rolling_vol.png")
+    plt.savefig("outputs/rolling_vol.png")
     plt.close()
-
-
-if __name__ == "__main__":
-    # essentially returns.py had to be rebuilt here for the sake of testing
-    data = pd.read_csv(
-        r"F:\stocks_returns_analyzer\data\AAPL.csv",
-        index_col=0,
-        parse_dates=True,
-        date_format="%Y-%m-%d",
-    )
-    close = pd.to_numeric(data["Close"], errors="coerce").dropna()
-    log_returns = np.log(close / close.shift(1)).dropna()
-
-    test_params = {
-        "norm": dict(zip(("mu", "sigma"), stats.norm.fit(log_returns))),
-        "t": dict(zip(("df", "loc", "scale"), stats.t.fit(log_returns))),
-        "skewnorm": dict(zip(("a", "loc", "scale"), stats.skewnorm.fit(log_returns))),
-        "gamma": dict(zip(("a", "loc", "scale"), stats.gamma.fit(log_returns))),
-        "genlogistic": dict(
-            zip(("c", "loc", "scale"), stats.genlogistic.fit(log_returns))
-        ),
-    }
-
-    plot_qq(log_returns, test_params, "AAPL")
-
-    tickers = ["SPY", "RELIANCE_NS", "TCS_NS", "INFY_NS", "HDFCBANK_NS"]
-    returns_dict = {}
-    for ticker in tickers:
-        returns_dict[ticker] = compute_log_returns(f"data/{ticker}.csv")
-
-    plot_rolling_vol(returns_dict)
