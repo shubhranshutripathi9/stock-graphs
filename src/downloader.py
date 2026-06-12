@@ -18,6 +18,8 @@ def download_stocks():
         "INTC",
         "F",
         "NOK",
+        "GOOGL",
+        "MSFT",
     ]
     os.makedirs("data", exist_ok=True)
 

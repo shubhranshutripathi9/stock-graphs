@@ -3,7 +3,7 @@ from scipy import stats
 import os
 import numpy as np
 import pandas as pd
-from returns import compute_log_returns
+
 
 
 def plot_qq(log_returns, results, ticker):
